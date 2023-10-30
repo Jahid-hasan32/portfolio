@@ -1,20 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     
+    const navbar = document.querySelector(".nav");
+    let isNavBackgroundActive = false;
     
-
-
-const navbar = document.querySelector(".nav");
-let isNavBackgroundActive = false;
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY >= 200 && !isNavBackgroundActive) {
-        navbar.classList.add("change_color_on_scroll");
-        isNavBackgroundActive = true;
-    } else if (window.scrollY < 200 && isNavBackgroundActive) {
-        navbar.classList.remove("change_color_on_scroll");
-        isNavBackgroundActive = false;
-    }
-});
+    window.addEventListener('scroll', () => {
+        console.log("Scroll position: " + window.scrollY);
+        
+        if (window.scrollY >= 200) {
+            console.log("Adding background color class");
+            navbar.classList.add("change_color_on_scroll");
+            isNavBackgroundActive = true;
+        } else if (window.scrollY < 200 && isNavBackgroundActive) {
+            console.log("Removing background color class");
+            navbar.classList.remove("change_color_on_scroll");
+            isNavBackgroundActive = false;
+        }
+    });
+    
 
 // Initialize ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -111,17 +113,28 @@ cursor1Animation()
 // cursor2 animations
 
 function cursor2Animation() {
-    var PageCursor = document.getElementById("cursor2");
+    var PageCursor = document.querySelector(".cursor2");
     var page3       = document.getElementById("page3");
     page3.addEventListener("mousemove", function(dets){
-        console.log(dets);
+        // console.log(dets.x);
+        var mouseX = dets.clientX;
+        var mouseY = dets.clientY;
         gsap.to(PageCursor, {
-            left: dets.x,
-            top:dets.y,
+            left: mouseX,
+            top:mouseY,
             opacity :1,
             scale : 3, 
         })
     })
+
+    // page3.addEventListener("mouseleave", function() {
+    //     gsap.to(PageCursor, {
+    //         left: 0,
+    //         top: 0,
+    //         opacity: 0,
+    //         scale: 0,
+    //     });
+    // });
 
     page3.addEventListener("mouseleave", function(dets){
         gsap.to(PageCursor, {
@@ -187,9 +200,9 @@ function page3container() {
         scrollTrigger: {
             trigger: ".about", // Check that this is the correct trigger element
             scroller: "#main",
-            start: "100% 100%", // Adjust as needed
+            start: "10% 100%", // Adjust as needed
             end: "50% 50%", // Adjust as needed
-            scrub: true,
+            // scrub: true,
             // markers : true
         },
     });
@@ -199,10 +212,10 @@ function page3container() {
         duration :2,
         opacity: 1,
         scrollTrigger: {
-            trigger: ".about", // Check that this is the correct trigger element
+            trigger: ".about", 
             scroller: "#main",
-            start: "100% 100%", // Adjust as needed
-            end: "50% 50%", // Adjust as needed
+            start: "50% 100%", 
+            end: "50% 50%", 
             scrub: true,
             // markers : true
         },
@@ -237,19 +250,19 @@ function skillAnimations() {
 
 // skillAnimations();
 
-gsap.to(skillAnimations(), {
-    // x: 100,
-    duration :1,
-    opacity: 1,
-    scrollTrigger: {
-        trigger: "#page4", // Check that this is the correct trigger element
-        scroller: "#main",
-        start: "100% 100%", // Adjust as needed
-        end: "50% 50%", // Adjust as needed
-        scrub: true,
-        markers : true
-    },
-});
+// gsap.to(skillAnimations(), {
+//     // x: 100,
+//     duration :1,
+//     opacity: 1,
+//     scrollTrigger: {
+//         trigger: "#page4", // Check that this is the correct trigger element
+//         scroller: "#main",
+//         start: "100% 100%", // Adjust as needed
+//         end: "50% 50%", // Adjust as needed
+//         scrub: true,
+//         // markers : true
+//     },
+// });
 
 // Assessed 
 
