@@ -1,31 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    const navbar = document.querySelector(".nav");
-    let isNavBackgroundActive = false;
-    
-    window.addEventListener('scroll', () => {
-        console.log("Scroll position: " + window.scrollY);
-        
-        if (window.scrollY >= 200) {
-            console.log("Adding background color class");
-            navbar.classList.add("change_color_on_scroll");
-            isNavBackgroundActive = true;
-        } else if (window.scrollY < 200 && isNavBackgroundActive) {
-            console.log("Removing background color class");
-            navbar.classList.remove("change_color_on_scroll");
-            isNavBackgroundActive = false;
-        }
-    });
-    
-
-// Initialize ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
 // Initialize Locomotive Scroll
 const scroll = new LocomotiveScroll({
     el: document.querySelector('#main'),
     smooth: true
 });
+
+
+// Initialize ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
 scroll.on("scroll", ScrollTrigger.update);
@@ -44,6 +27,22 @@ ScrollTrigger.scrollerProxy("#main", {
 
 
 // navbar animation
+
+// bg color change on scroll
+
+const nav = document.querySelector('.nav');
+const scrollTriggerPosition = 200; // Scroll position at which you want to change the background color
+
+scroll.on('scroll', (e) => {
+  const scrollY = e.scroll.y;
+
+  if (scrollY >= scrollTriggerPosition) {
+    nav.classList.add('change_color_on_scroll');
+  } else {
+    nav.classList.remove('change_color_on_scroll');
+  }
+});
+
 
 function navAnimation() {
 
@@ -116,7 +115,6 @@ function cursor2Animation() {
     var PageCursor = document.querySelector(".cursor2");
     var page3       = document.getElementById("page3");
     page3.addEventListener("mousemove", function(dets){
-        // console.log(dets.x);
         var mouseX = dets.clientX;
         var mouseY = dets.clientY;
         gsap.to(PageCursor, {
@@ -126,15 +124,6 @@ function cursor2Animation() {
             scale : 3, 
         })
     })
-
-    // page3.addEventListener("mouseleave", function() {
-    //     gsap.to(PageCursor, {
-    //         left: 0,
-    //         top: 0,
-    //         opacity: 0,
-    //         scale: 0,
-    //     });
-    // });
 
     page3.addEventListener("mouseleave", function(dets){
         gsap.to(PageCursor, {
@@ -147,7 +136,6 @@ function cursor2Animation() {
 }
 
 cursor2Animation()
-
 
 
 // page3container Animation function
@@ -194,28 +182,28 @@ function page3container() {
     // page3 seconde part. 
 
     gsap.to(".about_text", {
-        // x: 100,
-        duration :1,
+        x: -50,
+        duration:1,
         opacity: 1,
         scrollTrigger: {
             trigger: ".about", // Check that this is the correct trigger element
             scroller: "#main",
-            start: "10% 100%", // Adjust as needed
-            end: "50% 50%", // Adjust as needed
-            // scrub: true,
+            start: "17% 100%", // Adjust as needed
+            end: "30% 30%", // Adjust as needed
+            scrub: true,
             // markers : true
         },
     });
 
     gsap.to(".about_img", {
-        // x: 100,
+        x: 50,
         duration :2,
         opacity: 1,
         scrollTrigger: {
             trigger: ".about", 
             scroller: "#main",
             start: "50% 100%", 
-            end: "50% 50%", 
+            end: "80% 50%", 
             scrub: true,
             // markers : true
         },
@@ -225,44 +213,72 @@ function page3container() {
 page3container();
 
 
-// skills
+// services animation
 
-function skillAnimations() {
-    let circles = document.querySelectorAll(".circle");
-    let intervalDuration = 80;
+function servAnim() {
+    let servElem = document.querySelectorAll(".services_box .elem");
 
-    circles.forEach((circle) => {
-        let value = circle.querySelector(".wrapper span").textContent;
-        let setValue = circle.querySelector(".wrapper span");
-        let startValue = 0;
+    // image show on hover animation
 
-        let progress = setInterval(() => {
-            startValue++;
-            circle.style.background = `conic-gradient(#3586FF ${startValue * 3.6}deg, #777 0deg)`;
-            setValue.textContent = startValue;
+    let current_mouse_location = 0;
+    var next_mouse_location = 0;
 
-            if (startValue == value) {
-                clearInterval(progress);
-            }
-        }, intervalDuration);
-    });
+    servElem.forEach(function (elem) {
+        elem.addEventListener("mousemove", (details) => {
+            current_mouse_location = details.clientX - next_mouse_location;
+            next_mouse_location = details.clientX;
+
+            let moveY = details.clientY - elem.getBoundingClientRect().top;
+            let moveX = details.clientX - elem.getBoundingClientRect().left;
+
+            console.log(elem.getBoundingClientRect());
+
+            gsap.to(elem.querySelector("img"), {
+                opacity: 1,
+                duration: .4,
+                top : (moveY),
+                left : (moveX - 100),
+                ease: Power1,
+                rotate : gsap.utils.clamp(-20 , 20, current_mouse_location)                
+            })
+
+        })
+    })
+
+    // image hide 
+    servElem.forEach(function (elem) {
+        elem.addEventListener("mouseleave", (details) => {
+
+            gsap.to(elem.querySelector("img"), {
+                opacity: 0,
+                duration: .4,
+                
+            })
+
+        })
+    })
+
+    // heading tag animation
+
+    gsap.to('.services_box .elem', {
+        y: -40,
+        // bottom: -90,
+        stagger : .5,
+        // opacity : 0, 
+        ease: Power1,
+        scrollTrigger : {
+            trigger: ".services_box", 
+            scroller: "#main",
+            start: "50% 100%", 
+            end: "80% 50%", 
+            // markers : true
+        },
+    })
+
 }
 
-// skillAnimations();
+servAnim()
 
-// gsap.to(skillAnimations(), {
-//     // x: 100,
-//     duration :1,
-//     opacity: 1,
-//     scrollTrigger: {
-//         trigger: "#page4", // Check that this is the correct trigger element
-//         scroller: "#main",
-//         start: "100% 100%", // Adjust as needed
-//         end: "50% 50%", // Adjust as needed
-//         scrub: true,
-//         // markers : true
-//     },
-// });
 
 // Assessed 
 
@@ -293,48 +309,6 @@ function assessedAnimation() {
 }
 
 assessedAnimation()
-
-
-// blog
-
-function blogAnimation() {
-
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 4,
-        spaceBetween: 60,
-    
-        pagination: {
-          el: ".swiper-pagination",
-          dynamicBullets: true
-        },
-        autoplay: {
-          delay: 5000
-        },
-
-        breakpoints: {
-            // when window width is >= 320px
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 20
-            },
-            // when window width is >= 480px
-            480: {
-              slidesPerView: 3,
-              spaceBetween: 30
-            },
-            // when window width is >= 640px
-            640: {
-              slidesPerView: 4,
-              spaceBetween: 40
-            }
-          }
-    });
-
-}
-
-blogAnimation()
-
-
 
 
 // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
