@@ -1,18 +1,19 @@
 deleted part
 -----------
         <!-- page four -->
-        <div id="page4">
+        <div id="design_page">
             <div class="container">
                 
-                <h2>My Skills</h2>
-
-                <div class="page4_wrapper">
-                    <div class="page4_txt">
-                        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, magni.</h2>
+                <h2>here's details about my front-end skills and works!</h2>
+    
+                <div class="design_page_wrapper">
+                    <div class="design_page_txt">
+                        <h2>My front-end skills</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, magni.</p>
                     </div>
     
                     <div class="skills">
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -21,7 +22,7 @@ deleted part
                             </div>
                             <h3>HTML</h3>
                         </div>
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -30,7 +31,7 @@ deleted part
                             </div>
                             <h3>CSS</h3>
                         </div>
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -39,7 +40,7 @@ deleted part
                             </div>
                             <h3>TAILWIND CSS</h3>
                         </div>
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -48,7 +49,7 @@ deleted part
                             </div>
                             <h3>BOOTSTRAP</h3>
                         </div>
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -57,7 +58,7 @@ deleted part
                             </div>
                             <h3>JS</h3>
                         </div>
-
+    
                         <div class="circle_con">
                             <div class="circle">
                                 <div class="wrapper">
@@ -66,37 +67,10 @@ deleted part
                             </div>
                             <h3>REACT JS</h3>
                         </div>
-
-                        <div class="circle_con">
-                            <div class="circle">
-                                <div class="wrapper">
-                                    <span>80</span><span>%</span>
-                                </div>
-                            </div>
-                            <h3>PYTHON</h3>
-                        </div>
-
-                        <div class="circle_con">
-                            <div class="circle">
-                                <div class="wrapper">
-                                    <span>80</span><span>%</span>
-                                </div>
-                            </div>
-                            <h3>DJANGO</h3>
-                        </div>
-
-                        <div class="circle_con">
-                            <div class="circle">
-                                <div class="wrapper">
-                                    <span>90</span><span>%</span>
-                                </div>
-                            </div>
-                            <h3>DRF</h3>
-                        </div>
-
+    
                     </div>
                 </div>
-
+    
             </div>
         </div>
 
@@ -293,73 +267,87 @@ deleted part
    -----------------------------------------------------------
 
 
-/* page four styling */
-#page4{
-    min-height: 80vh;
-    width: 100%;
-    position: relative;
-    margin-top: 4rem;
-}
-
-#page4 .container .page4_wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#page4 .container > h2{
-    text-align: center;
-    margin: 0 auto 3rem ;
-    border-bottom: 3px solid;
-    width: fit-content;
-}
-
-#page4 .container .page4_wrapper .page4_txt {
-    flex: 2;
-    /* background: green; */
-}
-
-#page4 .container .page4_wrapper .skills{
-    flex: 3;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2rem;
-}
-
-#page4 .container .page4_wrapper .skills .circle_con {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#page4 .container .page4_wrapper .skills .circle_con  h3 {
-    margin-top: 1rem;
-}
-
-#page4 .container .page4_wrapper .skills .circle_con .circle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: conic-gradient(var(--color-secondary) 4deg, var(--color-third) 0deg);
-    width: 8rem;
-    height: 8rem;
-    border-radius: 100%;
-    /* opacity: 0; */
-}
-
-#page4 .container .page4_wrapper .skills .circle_con .circle .wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg-color);
-    width: 7rem;
-    height: 7rem;
-    border-radius: 100%;
-}
-
+   /* page four styling */
+   #design_page{
+       min-height: 100vh;
+       width: 100%;
+       position: relative;
+       margin-top: 6rem;
+   }
+   
+   #design_page .container .design_page_wrapper{
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       flex-wrap: wrap;
+       gap: 3rem;
+   }
+   
+   #design_page .container > h2{
+       text-align: center;
+       margin: 0 auto 3rem ;
+       border-bottom: 3px solid;
+       font-size: 2.5vw;
+       width: fit-content;
+   }
+   
+   #design_page .container .design_page_wrapper .design_page_txt {
+       flex: 1;
+       border: 1px sienna solid;
+       /* background: green; */
+   }
+   
+   #design_page .container .design_page_wrapper .design_page_txt h2 {
+       margin-bottom: 1.2rem;
+   }
+   
+   
+   #design_page .container .design_page_wrapper .design_page_txt p {
+       font-size: 1.4vw;
+   }
+   
+   
+   #design_page .container .design_page_wrapper .skills{
+       /* flex: 1; */
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-around;
+       align-items: center;
+       gap: 2rem;
+   }
+   
+   #design_page .container .design_page_wrapper .skills .circle_con {
+       display: flex;
+       /* flex-direction: column; */
+       /* justify-content: center; */
+       /* align-items: center; */
+   }
+   
+   #design_page .container .design_page_wrapper .skills .circle_con  h3 {
+       margin-top: 1rem;
+   }
+   
+   #design_page .container .design_page_wrapper .skills .circle_con .circle{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background: conic-gradient(var(--color-secondary) 4deg, var(--color-third) 0deg);
+       /* width: 8rem; */
+       /* height: 8rem; */
+       /* border-radius: 100%; */
+       /* opacity: 0; */
+   }
+   
+   #design_page .container .design_page_wrapper .skills .circle_con .circle .wrapper{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background: var(--bg-color);
+       /* width: 7rem; */
+       /* height: 7rem; */
+       /* border-radius: 100%; */
+   }
+   
 
 /* page five design */
 #page5{

@@ -15,6 +15,44 @@
 <body>
     
     <!-- nav bar -->
+
+    <!-- mobile navbar starts -->
+
+    <div class="mobile_nav_container">
+        <div class="mobile_nav">
+
+            <div class="mobile_nav_first">
+                <div class="logo">
+                    <a href="#"><img src="assets/logo.png" alt=""></a>
+                </div>
+                <div class="menubar">
+                    <img src="assets/menu.png" id="hamburger" alt="menubar">
+                    <img src="assets/menu-cross.png" id="menu-cross" alt="menu-cross">
+                </div>
+            </div>
+    
+            <div class="mobile_nav_second_part">
+                <ul>
+                    <li><a href="#page1" class="active"><span>//</span> home <span>//</span></a></li>
+                    <li><a href="#page2"><span>//</span> work <span>//</span></a></li>
+                    <li><a href="#page3"><span>//</span> about <span>//</span></a></li>
+                    <li><a href="#page4"><span>//</span> services <span>//</span></a></li>
+                    <li><a href="#page5"><span>//</span> assessed <span>//</span></a></li>
+                    <li>
+
+                    </li>
+
+                    <div class="third_part btn"><a href="#">Contact</a></div>
+
+                </ul>
+
+            </div>
+    
+        </div>
+    </div>
+
+    <!-- mobile nav ends -->
+
     <nav class="nav ">
         <div class="logo">
             <img src="assets/logo.png" alt="">
@@ -123,10 +161,12 @@
 
         </div>
 
-        <!-- page three -->
+        <!-- page three -->        
         <div id="page3">
             <!-- page 3 cursor -->
             <div class="cursor2"></div>
+
+            <div class="light_pink_glow"></div>
 
             <div class="page3container">
 
@@ -142,6 +182,8 @@
             </div>
 
             <!-- about -->
+
+
             <div class="container">
                 <div class="about">
                     <div class="about_text">
@@ -177,6 +219,8 @@
                     </div>
               </div>
             </div>
+
+
         </div>
 
         <!-- page four -->
@@ -187,15 +231,37 @@
                 <div class="services_box">
                     <div class="elem">
                         <img src="assets/s1.avif" alt="">
-                        <h1>WEB DESIGN</h1>
+
+                        <div class="elem_heading">
+                            <h1>WEB DESIGN</h1>
+                            <a href="#">
+                                <h5>SEE SKILLS</h5>
+                            </a>
+                        </div>
+
                     </div> 
                     <div class="elem">
                         <img src="assets/s2.avif" alt="">
-                        <h1>WEB DEVELOPMENT</h1>
+                        <div class="elem_heading">
+                            
+                            <h1>WEB DEVELOPMENT</h1>
+                            <a href="#">
+                                <h5>SEE SKILLS</h5>
+                            </a>
+                        </div>
+                        
                     </div>
                     <div class="elem lastelem">
                         <img src="assets/s3.avif" alt="">
-                        <h1>SEO </h1>
+
+                        <div class="elem_heading">
+                            <h1>SEO </h1>
+                            <a href="#">
+                                <h5>SEE SKILLS</h5>
+                            </a>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -314,12 +380,13 @@
         <!-- page six -->
         <div id="page6">
             <div class="container">
-                <h2>WANT TO WORK TOGETHER!</h2>
+
+                <h2 id="scramble">WANT TO WORK TOGETHER!</h2>
 
                 <div class="contact_container">
                     <div class="contact_slogan">
-                        <h1>Any Idea on your mind? </h1>
-                        <h1>let's make it real.</h1>
+                        <h1 class="contact_slogan_one">Any Idea on your mind? </h1>
+                        <h1 class="contact_slogan_two">let's make it real.</h1>
                     </div>
 
                     <form action="#" method="POST">
@@ -352,6 +419,15 @@
             </div>
         </div>
 
+        <!-- page saven -->
+        <div id="page7">
+            <div class="container">
+
+
+
+            </div>
+        </div>
+
         <!-- footer -->
         <footer>
             <div class="container">
@@ -362,6 +438,7 @@
                             <img src="assets/logo.png" alt="">
                         </a>
                     </div>
+                    
                     <div class="footer_social_box">
 
                         <div class="first_box">
@@ -406,9 +483,8 @@
                 <h4>Copyright © 2023 Apple Inc. || All rights reserved. || </h4>
             </div>
         </footer>
-    </main>
 
-    <!-- <h3>Copyright © 2023 Apple Inc. || All rights reserved. || </h3> -->
+    </main>
 
 
     <!-- locomotive js  -->
@@ -423,6 +499,7 @@
     <!-- gsap scroll trigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
+
     <!-- js link -->
     <script src="script.js"></script>
 

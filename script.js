@@ -31,6 +31,7 @@ ScrollTrigger.scrollerProxy("#main", {
 // bg color change on scroll
 
 const nav = document.querySelector('.nav');
+const mobile_nav_first = document.querySelector('.mobile_nav_first');
 const scrollTriggerPosition = 200; // Scroll position at which you want to change the background color
 
 scroll.on('scroll', (e) => {
@@ -38,8 +39,11 @@ scroll.on('scroll', (e) => {
 
   if (scrollY >= scrollTriggerPosition) {
     nav.classList.add('change_color_on_scroll');
+    mobile_nav_first.classList.add('change_color_on_scroll');
   } else {
     nav.classList.remove('change_color_on_scroll');
+    mobile_nav_first.classList.remove('change_color_on_scroll');
+
   }
 });
 
@@ -56,6 +60,41 @@ function navAnimation() {
 }
 
 navAnimation();
+
+
+// mobile navbar 
+
+function mobileNav() {
+    let hamburger = document.getElementById("hamburger");
+    let menuCross = document.getElementById("menu-cross");
+
+    var tl = gsap.timeline({defaults:{ease: 'expo.inOut', duration:1}})
+    hamburger.addEventListener("click", () => {
+        menuCross.style.display = 'block';
+        hamburger.style.display = 'none';
+        
+        tl.to(".mobile_nav_second_part", {display : "block",width : "100%",}, '-=1')
+        .to(".mobile_nav_second_part ul li a", {opacity:1, stagger:.1})
+
+    });
+
+    menuCross.addEventListener("click", () => {
+        menuCross.style.display = 'none';
+        hamburger.style.display = 'block';
+
+        tl.to(".mobile_nav_second_part ul li a", {opacity:0, stagger:.1}, '-=1')
+        .to(".mobile_nav_second_part", {display : "none",right: '0%',width : "0%",})
+
+    });
+
+    
+}
+
+mobileNav();
+
+
+// main page animation starts from here.....
+
 
 //  spin animation
 function spinAnimation() {
@@ -143,7 +182,7 @@ function page3container() {
     var tl = gsap.timeline({});
 
     gsap.from(".slogan", {
-        x: -100,
+        x: -80,
         opacity: 0,
         scrollTrigger: {
             trigger: ".page3container", // Check that this is the correct trigger element
@@ -155,7 +194,7 @@ function page3container() {
     });
 
     gsap.from(".page3container .desc", {
-        x: 100,
+        x: 80,
         opacity: 0,
         scrollTrigger: {
             trigger: ".page3container", // Check that this is the correct trigger element
@@ -271,6 +310,7 @@ function servAnim() {
             scroller: "#main",
             start: "50% 100%", 
             end: "80% 50%", 
+            scrub : true,
             // markers : true
         },
     })
@@ -307,9 +347,50 @@ function assessedAnimation() {
     })
 
 }
-
 assessedAnimation()
 
+
+// page six contact page
+
+
+function contact() {
+    var tl = gsap.timeline();
+  
+    // Add the first animation for contact_slogan_one
+    tl.from(".contact_slogan .contact_slogan_one", {
+      top: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".contact_container",
+        scroller: "#main",
+        start: "10% 100%",
+        end : false,
+        scrub: true,
+        markers: true,
+        once: true, // Add this to run the animation only once
+
+      }
+    });
+  
+    // Add the second animation for contact_slogan_two with "once: true"
+    tl.from(".contact_slogan .contact_slogan_two", {
+      top: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".contact_container",
+        scroller: "#main",
+        start: "15% 100%",
+        end : false,
+        scrub: true,
+        // markers: true,
+        once: true, // Add this to run the animation only once
+
+      }
+    });
+  }
+  
+// contact();
+  
 
 // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
 ScrollTrigger.addEventListener("refresh", () => scroll.update());
@@ -318,3 +399,4 @@ ScrollTrigger.addEventListener("refresh", () => scroll.update());
 ScrollTrigger.refresh();
 
 });
+
