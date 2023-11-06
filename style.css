@@ -694,8 +694,8 @@ nav .second_part ul li a:hover{
     position: relative;
 }
 
-#page6 h2 {
-    font-size: 6.7vw;
+#page6 .container > h2 {
+    font-size: 5.7vw;
     margin-bottom: 4vw;
 }
 
